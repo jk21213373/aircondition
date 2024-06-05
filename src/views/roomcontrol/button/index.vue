@@ -1,8 +1,8 @@
 <template>
     <div class="example-basic">
         <el-time-picker format='HH:mm' value-format='HH:mm' popper-class="elDatePicker"
-            v-model="useRoomtime.Times[massage]" arrow-control ref="aaa" />
-        <el-button @click='ttt'>{{ useRoomtime.Times[massage] + 'AM' }}</el-button>
+            v-model="useRoomtime.Times[massage!]" arrow-control ref="aaa" />
+        <el-button @click='ttt'>{{ useRoomtime.Times[massage!] + 'AM' }}</el-button>
     </div>
 </template>
 <script lang="ts" setup>
