@@ -9,16 +9,16 @@ enum API {
     ADD_STOREY = '/air/add/storey/'
 }
 //获取用户账号信息的接口
-export const reqGetStroey= () => request.get(API.GET_STOREY);
+export const reqGetStroey = () => request.get(API.GET_STOREY);
 
-export const reqDeleteStorey= (id: number) => request.post(API.DELETE_STOREY, 
-    qs.stringify({"id":id})
+export const reqDeleteStorey = (id: number) => request.post(API.DELETE_STOREY,
+    qs.stringify({ "id": id })
 );
 export const reqAddStorey = (data: any) => {
     //携带参数有ID更新
     if (data.id && data.id != '') {
-        return request.post(API.UPDATE_STOREY,  qs.stringify(data));
+        return request.post(API.UPDATE_STOREY, qs.stringify(data));
     } else {
-        return request.post(API.ADD_STOREY,  qs.stringify(data));
+        return request.post(API.ADD_STOREY, qs.stringify(data));
     }
 }

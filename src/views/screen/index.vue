@@ -123,11 +123,8 @@ window.onresize = () => {
 
         .area {
 
+          color: red;
           flex: 1;
-        }
-
-        .bar {
-
           flex: 1;
         }
       }
@@ -139,7 +136,6 @@ window.onresize = () => {
 
         .school {
           flex: 4;
-
         }
 
         .structure {

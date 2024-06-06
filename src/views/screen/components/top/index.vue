@@ -70,7 +70,7 @@ onBeforeUnmount(() => {
       background-size: 100% 100%;
       text-align: center;
       line-height: 40px;
-      // color: #29fcff;
+      color: #29fcff;
       font-size: 20px;
       cursor: pointer;
     }
@@ -86,7 +86,7 @@ onBeforeUnmount(() => {
       background-size: 100% 100%;
       text-align: center;
       line-height: 74px;
-      // color: #29fcff;
+      color: #29fcff;
       font-size: 30px;
     }
   }
@@ -107,13 +107,13 @@ onBeforeUnmount(() => {
       background-size: 100% 100%;
       text-align: center;
       line-height: 40px;
-      // color: #29fcff;
+      color: #29fcff;
       font-size: 20px;
       cursor: pointer;
     }
 
     .time {
-      // color: #29fcff;
+      color: #29fcff;
       font-size: 20px;
     }
   }

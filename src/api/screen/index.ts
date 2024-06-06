@@ -4,7 +4,7 @@ import request from "@/utils/request";
 enum API {
     ENERGYLINE_URL = "  ",
     ENERGYAREA_URL = "/user/account/register/",
-    ROOMENERGY_URL = "/user/account/info/",
+    ROOMENERGY_URL = "/air/query/roomsEnergy/",
     UNITEXCEPTION = "/user/account/info/",
 }
 //暴露请求函数
@@ -12,8 +12,9 @@ enum API {
 
 export const reqEnergyLine = () => request.post(API.ENERGYLINE_URL);
 export const reqEnergyArea = () => request.post(API.ENERGYAREA_URL);
-export const reqRoomEnergy = () => request.post(API.ROOMENERGY_URL);
-export const reqUnitException = () => request.post(API.UNITEXCEPTION);
+// 查询开关机掉线状态
+export const reqRoomEnergy = () => request.get(API.ROOMENERGY_URL);
+export const reqUnitException = () => request.get(API.UNITEXCEPTION);
 // , qs.stringify(data), { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } });
 // export const reqLogin = (data: loginForm) => request.post(API.LOGIN_URL, data);
 // export const reqRegister = (data: registerForm) => request.post(API.REGISTER_URL, qs.stringify(data));

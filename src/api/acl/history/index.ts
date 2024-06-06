@@ -8,12 +8,12 @@ enum API {
 }
 //获取用户账号信息的接口
 // export const reqUserInfo = (page: number) => request.get(API.ALLUSER_URL + `${page}`);
-export const reqGetHistory= (page: number) => request.get(API.ALLUSER_URL,
+export const reqGetHistory = (page: number) => request.get(API.ALLUSER_URL,
     {
-        params: { page: `${page}`}
+        params: { page: `${page}` }
     }
 );
 
-export const reqDeleteHistory= (id: number) => request.post(API.DELETE_HISTORY, 
-    qs.stringify({"id":id})
+export const reqDeleteHistory = (id: number) => request.post(API.DELETE_HISTORY,
+    qs.stringify({ "id": id })
 );

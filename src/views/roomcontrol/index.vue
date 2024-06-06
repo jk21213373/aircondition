@@ -13,10 +13,10 @@
             <div class="bottom">
                 <div class="rtop">
                     <div v-for="(room, key) in rooms" :key="key" class="roominfo" @click="checkroom(key)"
-                        :style="{ 'background-color': colors[Number(room.state) - 1] }">
+                        :style="{ 'background-color': colors[Number(room.state)] }">
                         <span class="span1">{{ room.name }}</span>
                         <div class="span2">
-                            <span>{{ room.temperature ? room.temperature + '℃' : '--' }}</span>
+                            <span>{{ room.tem ? room.tem + '℃' : '--' }}</span>
                             <span>{{ room.time ? room.time + 'h' : '--' }}</span>
                         </div>
                     </div>
@@ -89,12 +89,12 @@
                         </div>
                     </div>
                     <div class="b3">
-                        <div class="time" v-for="(time, key) in useRoomtime.Times" :key="key">
+                        <div class="time" v-for="(time, key) in times" :key="key">
                             <!-- <el-button><span>{{ time + 'AM' }}</span></el-button> -->
-                            <Button :massage="key"></Button>
+                            <Button :message="key"></Button>
                             <span class="to">to</span>
                             <!-- <el-button><span>{{ time + 'AM' }}</span> </el-button> -->
-                            <Button :massage="key"></Button>
+                            <Button :message="key"></Button>
                             <input type="checkbox" id="checkbox" style="width: 20px;height: 20px"
                                 v-model="checkeds[key]">
                             <label for="checkbox">启用</label></input>
@@ -120,8 +120,8 @@ import useLayOutRoomStore from '@/store/modules/room';
 import Pie from './components/pie/index.vue'
 import Button from './button/index.vue'
 import useUserStore from '@/store/modules/user';
-import { reqGetRoom, reqDeleteRoom, reqAddRoom } from '@/api/acl/room'
-import { postBuilding, postStorey } from '@/api/roomcontrol';
+import { reqDeleteRoom, reqAddRoom } from '@/api/acl/room'
+import { reqQueRoom, postBuilding, postStorey } from '@/api/roomcontrol';
 import { useRouter } from 'vue-router'
 import { ElNotification } from 'element-plus';
 import useRoomTime from '@/store/modules/roomcontrol.ts'
@@ -152,204 +152,205 @@ const options = reactive([
     },
 ])
 const storeyselect = async () => {
-    options[Number(value.value) - 1].poweron = !options[Number(value.value) - 1].poweron;
+    options[Number(value.value) - 1].poweron = !options[Number(value.value)].poweron;
     await postStorey(Number(value.value), options[value.value].poweron);
 }
 
 interface roomnode {
     name: string,
-    temperature: string,
+    tem: string,
     time: string,
     state: string,
     floor: string,
 }
 let useStore = useUserStore();
+// 0 关 1开 2 故障
 let colors = ['#ee6666', '#15c50b', '#797979']
 //获取数据大屏展示内容盒子的DOM元素
 let screen = ref()
 let rooms = ref<roomnode[]>([
-    {
-        name: '201',
-        temperature: '23',
-        time: '1.2',
-        state: '3',
-        floor: "2F"
-    },
-    {
-        name: '201',
-        temperature: '23',
-        time: '1.2',
-        state: '2',
-        floor: "2F"
-    },
-    {
-        name: '201',
-        temperature: '23',
-        time: '1.2',
-        state: '1',
-        floor: "2F"
-    },
-    {
-        name: '201',
-        temperature: '23',
-        time: '1.2',
-        state: '3',
-        floor: "2F"
-    },
-    {
-        name: '201',
-        temperature: '23',
-        time: '1.2',
-        state: '2',
-        floor: "2F"
-    },
-    {
-        name: '201',
-        temperature: '23',
-        time: '1.2',
-        state: '1',
-        floor: "2F"
-    },
-    {
-        name: '201',
-        temperature: '23',
-        time: '1.2',
-        state: '3',
-        floor: "2F"
-    },
-    {
-        name: '201',
-        temperature: '23',
-        time: '1.2',
-        state: '3',
-        floor: "2F"
-    },
-    {
-        name: '201',
-        temperature: '23',
-        time: '1.2',
-        state: '2',
-        floor: "2F"
-    },
-    {
-        name: '201',
-        temperature: '23',
-        time: '1.2',
-        state: '1',
-        floor: "2F"
-    },
-    {
-        name: '201',
-        temperature: '23',
-        time: '1.2',
-        state: '1',
-        floor: "2F"
-    },
-    {
-        name: '201',
-        temperature: '23',
-        time: '1.2',
-        state: '3',
-        floor: "2F"
-    },
-    {
-        name: '201',
-        temperature: '23',
-        time: '1.2',
-        state: '1',
-        floor: "2F"
-    },
-    {
-        name: '201',
-        temperature: '23',
-        time: '1.2',
-        state: '2',
-        floor: "2F"
-    },
-    {
-        name: '201',
-        temperature: '23',
-        time: '1.2',
-        state: '3',
-        floor: "2F"
-    },
-    {
-        name: '201',
-        temperature: '23',
-        time: '1.2',
-        state: '1',
-        floor: "2F"
-    },
-    {
-        name: '201',
-        temperature: '23',
-        time: '1.2',
-        state: '2',
-        floor: "2F"
-    },
-    {
-        name: '201',
-        temperature: '23',
-        time: '1.2',
-        state: '2',
-        floor: "2F"
-    },
-    {
-        name: '201',
-        temperature: '23',
-        time: '1.2',
-        state: '2',
-        floor: "2F"
-    },
-    {
-        name: '201',
-        temperature: '23',
-        time: '1.2',
-        state: '1',
-        floor: "2F"
-    },
-    {
-        name: '201',
-        temperature: '23',
-        time: '1.2',
-        state: '2',
-        floor: "2F"
-    },
-    {
-        name: '201',
-        temperature: '23',
-        time: '1.2',
-        state: '1',
-        floor: "2F"
-    },
-    {
-        name: '201',
-        temperature: '23',
-        time: '1.2',
-        state: '1',
-        floor: "2F"
-    },
-    {
-        name: '201',
-        temperature: '23',
-        time: '1.2',
-        state: '2',
-        floor: "2F"
-    },
-    {
-        name: '201',
-        temperature: '23',
-        time: '1.2',
-        state: '3',
-        floor: "2F"
-    },
-    {
-        name: '201',
-        temperature: '23',
-        time: '1.2',
-        state: '3',
-        floor: "2F"
-    },
+    // {
+    //     name: '201',
+    //     temperature: '23',
+    //     time: '1.2',
+    //     state: '3',
+    //     floor: "2F"
+    // },
+    // {
+    //     name: '202',
+    //     temperature: '30',
+    //     time: '1.7',
+    //     state: '2',
+    //     floor: "2F"
+    // },
+    // {
+    //     name: '203',
+    //     temperature: '23',
+    //     time: '1.2',
+    //     state: '1',
+    //     floor: "2F"
+    // },
+    // {
+    //     name: '204',
+    //     temperature: '23',
+    //     time: '1.2',
+    //     state: '3',
+    //     floor: "2F"
+    // },
+    // {
+    //     name: '205',
+    //     temperature: '23',
+    //     time: '1.2',
+    //     state: '2',
+    //     floor: "2F"
+    // },
+    // {
+    //     name: '206',
+    //     temperature: '23',
+    //     time: '1.2',
+    //     state: '1',
+    //     floor: "2F"
+    // },
+    // {
+    //     name: '207',
+    //     temperature: '23',
+    //     time: '1.2',
+    //     state: '3',
+    //     floor: "2F"
+    // },
+    // {
+    //     name: '208',
+    //     temperature: '23',
+    //     time: '1.2',
+    //     state: '3',
+    //     floor: "2F"
+    // },
+    // {
+    //     name: '209',
+    //     temperature: '23',
+    //     time: '1.2',
+    //     state: '2',
+    //     floor: "2F"
+    // },
+    // {
+    //     name: '210',
+    //     temperature: '23',
+    //     time: '1.2',
+    //     state: '1',
+    //     floor: "2F"
+    // },
+    // {
+    //     name: '301',
+    //     temperature: '23',
+    //     time: '1.2',
+    //     state: '1',
+    //     floor: "2F"
+    // },
+    // {
+    //     name: '302',
+    //     temperature: '23',
+    //     time: '1.2',
+    //     state: '3',
+    //     floor: "2F"
+    // },
+    // {
+    //     name: '303',
+    //     temperature: '23',
+    //     time: '1.2',
+    //     state: '1',
+    //     floor: "2F"
+    // },
+    // {
+    //     name: '304',
+    //     temperature: '23',
+    //     time: '1.2',
+    //     state: '2',
+    //     floor: "2F"
+    // },
+    // {
+    //     name: '305',
+    //     temperature: '23',
+    //     time: '1.2',
+    //     state: '3',
+    //     floor: "2F"
+    // },
+    // {
+    //     name: '306',
+    //     temperature: '23',
+    //     time: '1.2',
+    //     state: '1',
+    //     floor: "2F"
+    // },
+    // {
+    //     name: '307',
+    //     temperature: '23',
+    //     time: '1.2',
+    //     state: '2',
+    //     floor: "2F"
+    // },
+    // {
+    //     name: '308',
+    //     temperature: '23',
+    //     time: '1.2',
+    //     state: '2',
+    //     floor: "2F"
+    // },
+    // {
+    //     name: '309',
+    //     temperature: '23',
+    //     time: '1.2',
+    //     state: '2',
+    //     floor: "2F"
+    // },
+    // {
+    //     name: '310',
+    //     temperature: '23',
+    //     time: '1.2',
+    //     state: '1',
+    //     floor: "2F"
+    // },
+    // {
+    //     name: '401',
+    //     temperature: '23',
+    //     time: '1.2',
+    //     state: '2',
+    //     floor: "2F"
+    // },
+    // {
+    //     name: '402',
+    //     temperature: '23',
+    //     time: '1.2',
+    //     state: '1',
+    //     floor: "2F"
+    // },
+    // {
+    //     name: '403',
+    //     temperature: '23',
+    //     time: '1.2',
+    //     state: '1',
+    //     floor: "2F"
+    // },
+    // {
+    //     name: '404',
+    //     temperature: '23',
+    //     time: '1.2',
+    //     state: '2',
+    //     floor: "2F"
+    // },
+    // {
+    //     name: '405',
+    //     temperature: '23',
+    //     time: '1.2',
+    //     state: '3',
+    //     floor: "2F"
+    // },
+    // {
+    //     name: '406',
+    //     temperature: '23',
+    //     time: '1.2',
+    //     state: '3',
+    //     floor: "2F"
+    // },
 ]);
 let roomStore = useLayOutRoomStore();
 let buildings = reactive([{ name: '办公室', poweron: false }, { name: '会议室', poweron: false }, { name: '实验室', poweron: true }]);
@@ -383,24 +384,9 @@ const goBack = () => {
 }
 
 const getRoom = async () => {
-    // rooms.value = {
-    //     mode: '1',
-    //     speed: '1',
-    //     temperature: '23',
-    //     holidayStarttime: '8:00',
-    //     holidayEndtime: '12:00',
-    //     workdayStarttime: '5:00',
-    //     workdayEndtime: '18:00',
-    //     temperature: '',
-    //     building[{
-    //         name: '会议室',
-    //         poweron: '1',
-    //     }]
-    // }
 
-    let result = await reqGetRoom(1, 2);
+    let result = await reqQueRoom();
     if (result) {
-        // total.value = result.rooms_count;
         rooms.value = result.rooms;
     } else {
         ElNotification({ type: 'error', message: '获取房间信息失败' });

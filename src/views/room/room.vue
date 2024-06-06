@@ -139,17 +139,7 @@ import useLayOutRoomStore from '@/store/modules/room';
 import { ElNotification } from 'element-plus';
 import useLayOutSettingStore from '@/store/modules/setting';
 let settingStore = useLayOutSettingStore();
-// interface Node {
-//     id: string,
-//     storeyId: string,
-//     name: string,
-//     area: string,
-//     count: string,
-//     holidayStarttime: string,
-//     holidayEndtime: string,
-//     workdayStarttime: string,
-//     workdayEndtime: string,
-// }
+
 let roomStore = useLayOutRoomStore();
 
 let $router = useRouter();
@@ -160,17 +150,10 @@ let total = ref(0);
 // 多选框
 let table = ref([])
 let tableCount = ref()
-let rooms = ref([{
-    id: '12', storeyId: '11',
-    name: '2011', area: '200', count: '13',
-    holidayStarttime: '12:12:12',
-    holidayEndtime: '12:12:12',
-    workdayStarttime: '12:12:12',
-    workdayEndtime: '12:12:12',
-}]);
+let rooms = ref([])
 // 修改信息
 let drawer = ref(false);
-let storeyId = ref();
+let storeyId = ref(0);
 
 let formRef = ref();
 let roomParams = reactive({
@@ -192,7 +175,9 @@ const handler = () => {
 }
 const getRoom = async (pager = 1) => {
     //收集当前页码
-    pageNo.value = pager;
+    if (pager.value) {
+        pageNo.value = pager.value;
+    }
     // storey = 0 搜索全部
     let result = await reqGetRoom(pageNo.value, storeyId.value);
     if (result) {

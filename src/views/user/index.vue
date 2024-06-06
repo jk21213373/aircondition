@@ -15,7 +15,6 @@
         <el-button class="btn" type="primary'" size="default" :disabled="selectIdArr.length ? false : true"
             @click="deleteSelectUser"><span>批量删除</span></el-button>
         <el-table @selection-change="selectChange" style="margin:10px 0px;" :data="userArr">
-            <!-- ts类型检查 -->
             <el-table-column type="selection" align="center"></el-table-column>
             <el-table-column label="#" align="center" type="index"></el-table-column>
             <el-table-column label="ID" align="center" prop="userId"></el-table-column>
@@ -24,7 +23,7 @@
             <el-table-column label="创建时间" align="center" prop="createTime" show-overflow-tooltip></el-table-column>
             <el-table-column label="是否启用" align="center" prop="defunct" show-overflow-tooltip>
                 <template #default="scope">
-                    <el-switch style="--el-switch-on-color: #141c42" v-model="scope.row.defunct"
+                    <el-switch style="--el-switch-on-color: #141c42" v-model="scope.row.defunct" active-value="Y" inactive-value="N"
                         @change="changeStatus(scope.row)" />
                 </template>
             </el-table-column>
@@ -73,8 +72,8 @@
         </el-form>
         <el-checkbox-group v-model="userrooms" v-else>
             <el-row :gutter="10">
-                <el-col v-for="room in rooms" :key="room" :span="5">
-                    <el-checkbox :label="room" style="margin: 8px 0;" :value="room"> {{ room }}</el-checkbox>
+                <el-col v-for="room in rooms" :key="room" :span="15">
+                    <el-checkbox :label="room" style="margin: 1px 0;" :value="room"border> 房间id：{{ room.id }} ，房间名：{{ room.name }}</el-checkbox>
                 </el-col>
             </el-row>
         </el-checkbox-group>
@@ -121,7 +120,8 @@ const roomPermission = async (row) => {
     userParams.id = row.userId;
     try {
         let result = await reqRoomInfo(row.userId);
-        userrooms.value = result;
+        userrooms.value = result.assigns;
+        console.log(userrooms.value)
     } catch (error) {
         ElNotification({
             type: 'error',
@@ -144,7 +144,8 @@ const getHasUser = async (pager = 1) => {
     }
     try {
         let result = await reqRoomsInfo();
-        rooms.value = result;
+        rooms.value = result.names;
+        // console.log(rooms.value[1])
     } catch (error) {
         ElNotification({
             type: 'error',
@@ -351,6 +352,8 @@ const reset = () => {
     // background: linear-gradient(to right, #2e3863, #435a91, #31426b);
     background: #fff;
     border-radius: 50px;
+    // border-color: black;
+    // border-color: #555666;
     border-color: #ccccd8;
     outline: none;
     cursor: pointer;
@@ -366,6 +369,7 @@ const reset = () => {
     font-size: 12px;
     text-transform: uppercase;
     letter-spacing: 1px;
+    // color: black;
     color: #555666;
     transition: top 0.5s;
 }
