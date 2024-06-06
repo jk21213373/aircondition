@@ -384,7 +384,7 @@ const goBack = () => {
 }
 
 const getRoom = async () => {
-
+    
     let result = await reqQueRoom();
     if (result) {
         rooms.value = result.rooms;

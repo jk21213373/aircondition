@@ -3,7 +3,7 @@
         <div class="page">
             <!-- <img src="@/assets/images/404.jpg" alt="" /> -->
         </div>
-        <el-button class="btn" @click="$router.push(routes[index])"><span
+        <el-button class="btn" @click="() => { $router.push(routes[index]) }"><span
                 style="color:white;font-weight: bold;">返回首页</span></el-button>
     </div>
 </template>
@@ -35,6 +35,25 @@ let $router = useRouter();
         /* overflow: hidden; */
         background: url("@/assets/images/404.jpg") no-repeat center;
         background-size: cover;
+        /* position: relative; */
+        /* flex-direction: column;
+        align-items: center;
+        justify-content: center; */
+
+        /* img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            height: auto;
+            height: 100%;  width: 100%;
+
+            object-fit: cover;
+            
+            width: 100%;
+            height: 100%;
+            transform: scale(1.5);
+        } */
+
     }
 
     .btn {

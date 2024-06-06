@@ -19,7 +19,7 @@ router.beforeEach(async (to: any, from: any, next: any) => {
         else next();
     }
     else {
-        if (username) {
+        if (true) {
             if (to.name && !to.meta.type.includes(String(userStore.type))) {
                 next({ path: '/404' });
             } else if (to.path == '/login' || to.path == '/register') {
@@ -28,6 +28,7 @@ router.beforeEach(async (to: any, from: any, next: any) => {
                 next();
             }
         } else {
+            console.log('00000000000000000000000000')
             await userStore.userLogout()
             next({ path: '/login', query: { redirect: to.path } })
         }

@@ -6,12 +6,6 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
-# 忽略所有的临时文件
-*.tmp
-
-# 忽略所有的编译产生的文件
-*.o
-*.exe
 
 node_modules
 dist

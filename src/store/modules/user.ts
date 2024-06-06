@@ -13,7 +13,7 @@ let useUserStore = defineStore('User', {
             menuRoutes: constantRoute,
             privilege: [],
             username: '',
-            type: '',
+            type: '1',
         }
     },
 
@@ -22,6 +22,9 @@ let useUserStore = defineStore('User', {
             //登录请求
             let result = await reqLogin(data);
             if (result.error_message === "success") {
+                // if (result.code == 200) {
+                //pinia仓库存储一下token
+                //由于pinialvuex存储数据其实利用js对象
                 this.token = result.token;
                 //本地存储持久化存储一份
                 sessionStorage.setItem("TOKEN", result.token);
@@ -36,15 +39,23 @@ let useUserStore = defineStore('User', {
             if (result.error_message === "success") {
                 this.username = result.username;
                 this.privilege = result.privilege;
-                this.type = result.type;
+                // this.type = result.type;
                 return 'ok';
             } else {
                 return Promise.reject(new Error(result.message));
             }
+            // let result = await reqUserInfo();
+            // if (result.code == 200) {
+            //     this.username = result.data.name;
+            //     return 'ok';
+            // } else {
+            //     return Promise.reject(new Error(result.message));
+            // }
         },
         userLogout() {
             this.token = '';
             this.username = '';
+            // this.privilege = '';
             this.type = '';
             sessionStorage.removeItem('TOKEN');
         }

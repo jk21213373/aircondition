@@ -31,11 +31,11 @@ export const reqUpdateUser = (data: any) => {
     return request.post(API.ADDUSER_URL, qs.stringify(data));
 }
 
-export const reqRemoveUser = (userId: number) => request.post(API.DELETEUSER_URL, qs.stringify({ "userId": userId }));
+export const reqRemoveUser = (userId: number) => request.post(API.DELETEUSER_URL, qs.stringify({"userId":userId}));
 
 export const reqRoomsInfo = () => request.post(API.GETROOMS_URL);
 
-export const reqRoomInfo = (userId: number) => request.post(API.GETROOM_URL, qs.stringify({ "userId": userId }));
+export const reqRoomInfo = (userId: number) => request.post(API.GETROOM_URL, qs.stringify({"userId":userId}));
 
 export const postRoomsInfo = (data: any) => {
     return request.post(API.POSTROOMS_URL, qs.stringify(data));
@@ -47,4 +47,4 @@ export const checkUserInfo = (name: string) => request.get(API.ALLUSER_URL,
     }
 );
 
-export const changeUserStatus = (userId: number) => request.post(API.CHANGESTATUS_URL, qs.stringify({ "userId": userId }));
+export const changeUserStatus = (userId: number) => request.post(API.CHANGESTATUS_URL, qs.stringify({"userId":userId}));

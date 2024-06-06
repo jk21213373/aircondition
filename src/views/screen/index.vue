@@ -98,12 +98,13 @@ window.onresize = () => {
         margin-left: 40px;
 
         .pie {
-
+          color: red;
           flex: 1.2;
         }
 
-        .table {
 
+        .table {
+          color: red;
           flex: 2;
         }
       }
@@ -118,13 +119,17 @@ window.onresize = () => {
 
         .line {
           // background-color: red;
+          color: red;
           flex: 1;
         }
 
         .area {
-
           color: red;
           flex: 1;
+        }
+
+        .bar {
+          color: red;
           flex: 1;
         }
       }
@@ -136,6 +141,15 @@ window.onresize = () => {
 
         .school {
           flex: 4;
+          // display: flex;
+          // width: 100%;
+          // align-items: center;
+          // justify-content: center;
+
+          // .img {
+          //   max-width: 95%;
+          //   height: auto;
+          // }
         }
 
         .structure {

@@ -32,88 +32,88 @@ const getHasUser = async () => {
     console.log('cntY' + cntY)
 
     let mychart = echarts.init(charts.value)
-    //设置配置项
+  //设置配置项
     mychart.setOption({
 
-      tooltip: {
-        trigger: 'item',
-        formatter: '{a} <br/>{b}: {c} ({d}%)'
-      },
-      legend: {
-        // data: [
-        //   'Union Ads',
-        //   'Video Ads',
-        //   'Baidu',
-        //   'Google',
-        // ]
-      },
-      series: [
-        {
-          name: 'Access From',
-          type: 'pie',
-          selectedMode: 'single',
-          radius: [0, '30%'],
-          label: {
-            position: 'inner',
-            fontSize: 14
-          },
-          labelLine: {
-            show: false
-          },
-          data: [
-            { value: 775, name: '运行:80' },
-            { value: 679, name: '未运行:98', selected: true }
-          ]
-        },
-        {
-          name: 'Access From',
-          type: 'pie',
-          radius: ['45%', '60%'],
-          labelLine: {
-            length: 30
-          },
-          label: {
-            formatter: '{a|{a}}{abg|}\n{hr|}\n  {b|{b}：}{c}  {per|{d}%}  ',
-            backgroundColor: '#F6F8FC',
-            borderColor: '#8C8D8E',
-            borderWidth: 1,
-            borderRadius: 4,
+tooltip: {
+  trigger: 'item',
+  formatter: '{a} <br/>{b}: {c} ({d}%)'
+},
+legend: {
+  // data: [
+  //   'Union Ads',
+  //   'Video Ads',
+  //   'Baidu',
+  //   'Google',
+  // ]
+},
+series: [
+  {
+    name: 'Access From',
+    type: 'pie',
+    selectedMode: 'single',
+    radius: [0, '30%'],
+    label: {
+      position: 'inner',
+      fontSize: 14
+    },
+    labelLine: {
+      show: false
+    },
+    data: [
+      { value: 775, name: '运行:80' },
+      { value: 679, name: '未运行:98', selected: true }
+    ]
+  },
+  {
+    name: 'Access From',
+    type: 'pie',
+    radius: ['45%', '60%'],
+    labelLine: {
+      length: 30
+    },
+    label: {
+      formatter: '{a|{a}}{abg|}\n{hr|}\n  {b|{b}：}{c}  {per|{d}%}  ',
+      backgroundColor: '#F6F8FC',
+      borderColor: '#8C8D8E',
+      borderWidth: 1,
+      borderRadius: 4,
 
-            rich: {
-              a: {
-                color: '#6E7079',
-                lineHeight: 22,
-                align: 'center'
-              },
-              hr: {
-                borderColor: '#8C8D8E',
-                width: '100%',
-                borderWidth: 1,
-                height: 0
-              },
-              b: {
-                color: '#4C5058',
-                fontSize: 14,
-                fontWeight: 'bold',
-                lineHeight: 33
-              },
-              per: {
-                color: '#fff',
-                backgroundColor: '#4C5058',
-                padding: [3, 4],
-                borderRadius: 4
-              }
-            }
-          },
-          data: [
-            { value: cntN, name: '关机' },
-            { value: count - cntY - cntN, name: '故障' },
-            { value: cntY, name: '正常' },
-            // { value: 102, name: '效率低:10' }
-          ]
+      rich: {
+        a: {
+          color: '#6E7079',
+          lineHeight: 22,
+          align: 'center'
+        },
+        hr: {
+          borderColor: '#8C8D8E',
+          width: '100%',
+          borderWidth: 1,
+          height: 0
+        },
+        b: {
+          color: '#4C5058',
+          fontSize: 14,
+          fontWeight: 'bold',
+          lineHeight: 33
+        },
+        per: {
+          color: '#fff',
+          backgroundColor: '#4C5058',
+          padding: [3, 4],
+          borderRadius: 4
         }
-      ]
-    })
+      }
+    },
+    data: [
+      { value: cntN, name: '关机'},
+      { value: count - cntY - cntN, name: '故障'},
+      { value: cntY, name: '正常' },
+      // { value: 102, name: '效率低:10' }
+    ]
+  }
+]
+})
   } catch (error) {
   }
 }
@@ -126,7 +126,7 @@ onMounted(() => {
   getHasUser()
   console.log(cntP)
   //一个容器可以同时展示多种类型的图形图标
-
+  
 })
 
 //获取DOM节

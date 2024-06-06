@@ -1,7 +1,11 @@
+// import useUserStore from '@/store/modules/user';
+// let useStore = useUserStore();
+// let routes = ['/user', '/room', '/screen'];
 export const constantRoute = [
     {
         path: '/login',
         component: () => import('@/views/login/index.vue'),
+        // name: 'login',
         meta: {
             title: 'login',
             hidden: true,
@@ -11,6 +15,7 @@ export const constantRoute = [
     {
         path: '/register',
         component: () => import('@/views/register/index.vue'),
+        // name: 'register',
         meta: {
             title: 'register',
             hidden: true,
@@ -27,6 +32,7 @@ export const constantRoute = [
             icon: '',
             type: ['1', '2', '3'],
         },
+        // redirect: '/User',
         children: [
             {
                 path: '/user',
@@ -61,6 +67,26 @@ export const constantRoute = [
                     type: ['1'],
                 }
             },
+            // {
+            //     path: '/permission',
+            //     component: () => import('@/views/permission/index.vue'),
+            //     name: 'Permission',
+            //     meta: {
+            //         title: '节点管理',
+            //         hidden: false,
+            //         icon: 'List',
+            //     },
+            // },
+            // {
+            //     path: '/product',
+            //     component: () => import('@/views/product/index.vue'),
+            //     name: 'product',
+            //     meta: {
+            //         title: '设备信息',
+            //         icon: 'Management',
+            //         hidden: false,
+            //     },
+            // },
             {
                 path: '/equipment',
                 component: () => import('@/views/equipment/index.vue'),
@@ -72,6 +98,17 @@ export const constantRoute = [
                     type: ['1'],
                 }
             },
+            // {
+            //     path: '/control',
+            //     component: () => import('@/views/control/index.vue'),
+            //     name: 'control',
+            //     meta: {
+            //         title: '空调控制',
+            //         icon: 'Edit',
+            //         hidden: false,
+            //         type: ['1'],
+            //     },
+            // },
             {
                 path: '/history',
                 component: () => import('@/views/history/index.vue'),
@@ -85,6 +122,28 @@ export const constantRoute = [
             },
         ]
     },
+    // {
+    //     path: '/',
+    //     component: () => import('@/layout/index.vue'),
+    //     name: 'Screen',
+    //     meta: {
+    //         title: '',
+    //         hidden: false,
+    //         icon: '',
+    //     },
+    //     redirect: '/screen',
+    //     children: [
+    //         {
+    //             path: '/screen',
+    //             component: () => import('@/views/screen/index.vue'),
+    //             meta: {
+    //                 title: 'shuda',
+    //                 hidden: false,
+    //                 icon: 'HomeFilled',
+    //             },
+    //         },
+    //     ],
+    // },
     {
         path: '/screen',
         component: () => import('@/views/screen/index.vue'),
@@ -128,6 +187,16 @@ export const constantRoute = [
             type: ['1', '2', '3'],
         },
     },
+    // {
+    //     path: '/403',
+    //     component: () => import('@/views/403/index.vue'),
+    //     name: '403',
+    //     meta: {
+    //         title: '403',
+    //         hidden: true,
+    //         type: ['1', '2', '3'],
+    //     },
+    // },
     {
         path: '/:pathMatch(.*)*',
         redirect: '/404',
