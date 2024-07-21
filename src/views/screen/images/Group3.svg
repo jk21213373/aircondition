@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="713" height="94" viewBox="0 0 713 94" fill="none">
+<path     fill="url(#linear_fill_1HaBhzHAIQPxb090_hygp_0)"  d="M116.647 94L128.197 80.229C225.308 80.229 578.956 80.229 578.956 80.229L590.079 94L615.105 94L648.188 52.9032L668.937 52.9032L713 0L0 0L42.2809 52.9032L62.1023 52.9032L94.0447 94L116.647 94Z">
+</path>
+<path fill-rule="evenodd"  fill="url(#linear_border_1HaBhzHAIQPxb090_hygp_0)"  d="M62.1023 52.9032L94.0447 94L116.647 94L128.197 80.229L578.956 80.229L590.079 94L615.105 94L648.188 52.9032L668.937 52.9032L709.668 4L713 0L0 0L42.2809 52.9032L62.1023 52.9032ZM44.2046 48.9032L64.0595 48.9032L96.0019 90L114.781 90L126.332 76.229L580.867 76.229L591.99 90L613.19 90L646.273 48.9032L667.062 48.9032L704.463 4L8.31738 4L44.2046 48.9032Z">
+</path>
+<path     fill="#1561BA"  d="M150 88L562 88C565.314 88 568 90.6863 568 94L568 94L144 94L144 94C144 90.6863 146.686 88 150 88Z">
+</path>
+<defs>
+<linearGradient id="linear_fill_1HaBhzHAIQPxb090_hygp_0" x1="356.5" y1="0" x2="356.5" y2="85.09375" gradientUnits="userSpaceOnUse">
+<stop offset="0" stop-color="#01527D"  />
+<stop offset="0.6288646941489362" stop-color="#112E57"  />
+<stop offset="1" stop-color="#0B3A66"  />
+</linearGradient>
+<linearGradient id="linear_border_1HaBhzHAIQPxb090_hygp_0" x1="356.5" y1="-29.41796875" x2="356.5" y2="94" gradientUnits="userSpaceOnUse">
+<stop offset="0" stop-color="#6691FF"  />
+<stop offset="1" stop-color="#07246E"  />
+</linearGradient>
+</defs>
+</svg>
